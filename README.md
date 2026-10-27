@@ -2,16 +2,22 @@
 
 Public Windows installers and update metadata for Plato POS. Application source code is maintained separately.
 
-## Install or move to GitHub updates
+## Install Plato POS
 
-Download the `.exe` from the [Windows update channel](https://github.com/Mantaray-Digital/plato-pos-releases/releases/tag/unsigned-candidate).
-Finish checkout, synchronization and printing, quit the existing POS from its tray menu, then run the installer. Do not uninstall the existing app or clear its data first.
+Download the full `.exe` installer from the [stable Windows release](https://github.com/Mantaray-Digital/plato-pos-releases/releases/tag/unsigned).
+Run the installer, pair the computer using its dashboard POS device code, then sign in with a staff PIN. Choose **Set up printers** from the welcome tip, or **Later** to continue to POS. Printer setup remains available in **Settings → Printers**.
 
-Version `0.4.0-rc.3` introduces GitHub updates. Older `rc.1` and `rc.2` installations need this installer once manually because they check the previous website address.
+The first customer release is **0.4.0**, without a candidate version suffix. It uses the normal Plato POS installation and data profile.
 
 Once installed, use **Settings → General → Check for updates → Download update → Restart and update**. Downloads and restarts require operator action. Normal Quit does not install updates.
 
-The app displays **Plato POS** and keeps the existing candidate register identity and data directory. Moving between candidate and stable installations remains a separate setup. This release is unsigned; Windows may show an unknown-publisher prompt.
+When KDS is disabled in the dashboard, new offline orders offer **Cash** only. A configured cash payment method and an open cash shift are required. Disconnected registers use the last synced dashboard value; there is no separate local KDS toggle. Existing saved unpaid orders and dashboard printer names are preserved.
+
+This release is unsigned; Windows may show an unknown-publisher prompt.
+
+## RC update-flow testing
+
+The separate [RC test feed](https://github.com/Mantaray-Digital/plato-pos-releases/releases/tag/unsigned-candidate) advertises **rc.4** to existing **rc.3** test installations through Check for updates. It contains the same setup tip and KDS payment rule. The tip appears after new pairing and staff sign-in, rather than after every launch. Customer installations use the stable release above; the RC test profile stays separate.
 
 ## Update channels
 
@@ -19,8 +25,8 @@ Each channel has a permanent release tag. Do not rename or delete these tags.
 
 | Build | Release tag | Metadata asset |
 |---|---|---|
-| Current unsigned Windows build | `unsigned-candidate` | `unsigned-candidate.yml` |
-| Unsigned stable build | `unsigned` | `unsigned.yml` |
+| Customer Windows release | `unsigned` | `unsigned.yml` |
+| RC update-flow test build | `unsigned-candidate` | `unsigned-candidate.yml` |
 | Signed candidate build | `candidate` | `candidate.yml` |
 | Signed stable build | `stable` | `latest.yml` |
 
